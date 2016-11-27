@@ -1,26 +1,14 @@
 package ru.mail.polis.bench;
 
-import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
-
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Level;
-import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.annotations.Warmup;
+import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import ru.mail.polis.sort.*;
 
-import ru.mail.polis.sort.BubbleSort;
-import ru.mail.polis.sort.Helper;
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Nechaev Mikhail
@@ -57,6 +45,34 @@ public class AverageTimeBench {
     @Benchmark
     public void measureBubbleSort() {
         BubbleSort.sort(curr);
+    }
+    @Benchmark
+    public void measureInsertionSort() {
+        InsertionSort.sort(curr);
+    }
+    @Benchmark
+    public void measureInsertionBinSort() {
+        InsertionBinSort.sort(curr);
+    }
+    @Benchmark
+    public void measureShellSort() {
+        ShellSort.sort(curr);
+    }
+    @Benchmark
+    public void measureKStaticMSort() {
+        KStatisticMSort.sort(curr);
+    }
+    @Benchmark
+    public void measureMerge() {
+        MergeSort.sort(curr);
+    }
+    @Benchmark
+    public void measureQuickSort() {
+        QuickSort.sort(curr);
+    }
+    @Benchmark
+    public void measureQuickSortRandom() {
+        QuickSortRandom.sort(curr);
     }
 
     public static void main(String[] args) throws RunnerException {
