@@ -39,7 +39,7 @@ public class Helper {
         if (left > right)
             return right;
         int i = left, j = right, x = a[pivot];
-        Helper.swap(a, j--, pivot); //Поменяли с крайним
+        Helper.swap(a, j--, pivot);
         while (i <= j) {
             while (i <= j && a[i] < x) i++;
             while (i <= j && a[j] > x) j--;
@@ -47,7 +47,7 @@ public class Helper {
                 break;
             Helper.swap(a, i++, j--);
         }
-        Helper.swap(a, i, right); //Вернули на место
+        Helper.swap(a, i, right);
         return i;
     }
     public static void merge(int[] a1, int[] t1, int left, int mid, int right){
@@ -77,5 +77,15 @@ public class Helper {
                 Helper.swap(a,i++,j--);
         }
         return j;
+    }
+    public static int getCountsOfDigits(long number) {
+        return(number == 0) ? 1 : (int) Math.ceil(Math.log10(Math.abs(number) + 0.5));
+    }
+
+    public static int digit(int x,int i){
+        for (int h = 0; h < i - 1; h++){
+            x = x/10;
+        }
+        return x%10;
     }
 }
